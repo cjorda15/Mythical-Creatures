@@ -4,7 +4,7 @@ this.breed = breed;
 this.work = 0;
 this.cranky = false;
 this.standing = true;
-this.layingDown = false;
+this.layingDown = false; ///comment
 }
 Centaur.prototype.shoot = function () {
     if(this.cranky) {
