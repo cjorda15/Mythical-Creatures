@@ -7,9 +7,9 @@ this.standing = true;
 this.layingDown = false;
 }
 Centaur.prototype.shoot = function () {
-    if(this.cranky === true) {
+    if(this.cranky) {
       return 'NO!';
-    } else if (this.layingDown === true) {
+    } else if (this.layingDown) {
       return 'NO!';
     } else {
       this.work++;
@@ -20,7 +20,7 @@ Centaur.prototype.shoot = function () {
   };
 
   Centaur.prototype.run = function() {
-    if (this.layingDown === true) {
+    if (this.layingDown) {
       return 'NO!';
     } else {
       this.work++;
@@ -32,7 +32,7 @@ Centaur.prototype.shoot = function () {
   };
 
   Centaur.prototype.sleep = function () {
-    if(this.layingDown===true){
+    if(this.layingDown){
       this.cranky =false;
       return "ZZZZ"
     }else{
@@ -50,11 +50,11 @@ Centaur.prototype.shoot = function () {
   }
 
  Centaur.prototype.drinkPotion=function() {
- if(this.standing===true && this.cranky===true){
+ if(this.standing && this.cranky){
      this.cranky=false;
-   }else if(this.standing===true && this.cranky===false){
+   }else if(this.standing&& !(this.cranky)){
      this.cranky=true;
-   }else if(this.layingDown===true){
+   }else if(this.layingDown){
      return 'Not while I\'m standing!'
 
  }
