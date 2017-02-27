@@ -1,64 +1,50 @@
-function Centaur(name, breed) {
-this.name = name;
-this.breed = breed;
-this.work = 0;
-this.cranky = false;
-this.standing = true;
-this.layingDown = false; ///comment
+function Centaur(name, breed){
+  this.name = name
+  this.breed = breed
+  this.cranky = false
+  this.standing = true
+  this.layingDown = false
+  this.work = 0
 }
-Centaur.prototype.shoot = function () {
-    if(this.cranky) {
-      return 'NO!';
-    } else if (this.layingDown) {
-      return 'NO!';
-    } else {
-      this.work++;
-      if (this.work >= 3) {
-        this.cranky = true; }
-      return 'Twang!!!';
-    }
-  };
 
-  Centaur.prototype.run = function() {
-    if (this.layingDown) {
-      return 'NO!';
-    } else {
-      this.work++;
-        if (this.work >= 3) {
-          this.cranky = true;
-        }
-      return 'Clop clop clop clop!!!';
-    }
-  };
-
-  Centaur.prototype.sleep = function () {
-    if(this.layingDown){
-      this.cranky =false;
-      return "ZZZZ"
-    }else{
-    return "NO!"
-  };
+Centaur.prototype.shoot = function(){
+  this.work++
+  this.work>2 || this.standing===false?this.cranky=true:this.cranky=false
+  return this.cranky===true? "NO!":"Twang!!!"
 }
-  Centaur.prototype.layDown= function(){
-    this.standing = false;
-    this.layingDown = true;
+
+Centaur.prototype.run = function(){
+  this.work++
+  this.work>2 || this.standing===false?this.cranky=true:this.cranky=false
+  return this.cranky===true? "NO!":"Clop clop clop clop!!!"
+}
+
+Centaur.prototype.sleep = function(){
+  return this.standing===true? "NO!":(this.cranky=false,this.work=0,"ZZZZ")
+}
+
+
+Centaur.prototype.layDown = function(){
+
+  this.standing = false
+  this.layingDown = true
+}
+
+Centaur.prototype.standUp = function(){
+
+  this.standing = true
+  this.layingDown = false
+}
+
+Centaur.prototype.drinkPotion = function () {
+
+  if(this.cranky===false){
+    return this.cranky =true
   }
-
-  Centaur.prototype.standUp= function(){
-    this.standing = true;
-    this.layingDown = false;
-  }
-
- Centaur.prototype.drinkPotion=function() {
- if(this.standing && this.cranky){
-     this.cranky=false;
-   }else if(this.standing&& !(this.cranky)){
-     this.cranky=true;
-   }else if(this.layingDown){
-     return 'Not while I\'m standing!'
-
- }
- }
+return  this.standing===true?
+  (this.cranky =false,this.work= 0):
+   'Not while I\'m standing!'
+};
 
 
-module.exports = Centaur;
+module.exports =Centaur

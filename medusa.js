@@ -1,22 +1,26 @@
 function Medusa(name){
-  this.name= name;
-  this.statues=[];
-  this.stare = function(victim) {
-  victim.stoned=true;
-  if (this.statues.length===3) {
-    var lucky= this.statues[0];
-    lucky.stoned=false;
-    this.statues.slice(0,1)
-  }else{
-          this.statues.push(victim)
-    }
-  }
+this.name = name
+this.statues = []
+}
+
+
+Medusa.prototype.stare = function(vic){
+  vic.stoned= true
+  this.statues.push(vic)
+  if(this.statues.length>3){
+    var lucky = this.statues[0]
+    lucky.stoned = false
+    this.statues.shift();}
+
 }
 
 function Person(name){
-  this.name=name;
-  this.stoned = false;
+  this.name = name
+  this.stoned = false
+
 }
 
-module.exports.Person=Person;
-module.exports.Medusa=Medusa;
+
+
+module.exports.Medusa = Medusa
+module.exports.Person = Person

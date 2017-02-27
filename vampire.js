@@ -1,14 +1,13 @@
 function Vampire(name, pet){
-this.name=name;
-this.thirsty=true;
-this.drink= function(){
-this.thirsty=false;
-}
-
-this.pet= pet||"bat"
-
-
+  this.name = name
+  this.pet = pet===undefined? "bat": pet
 }
 
 
-module.exports= Vampire;
+Vampire.prototype.thirsty= true;
+
+Vampire.prototype.drink = function(){
+  this.thirsty= false
+}
+
+module.exports = Vampire

@@ -1,20 +1,14 @@
 function Unicorn(name, color){
-  this.name=name;
-  if(color===undefined){
-   this.color="white";
- }else{this.color=color}
+  this.name = name;
+  this.color= color===undefined? "white": color
 }
 
-Unicorn.prototype.isWhite= function(){
-  if(this.color==="white"){
-    return true;
-  }else{
-    return false;
-  }
+Unicorn.prototype.isWhite = function(){
+  return this.color==="white"? true: false
 }
 
-Unicorn.prototype.says= function(message){
-  return '**;* '+message+' *;**' ;
+Unicorn.prototype.says = function(say){
+  return '**;* '+say+' *;**'
 }
 
-module.exports= Unicorn;
+module.exports =Unicorn

@@ -1,32 +1,28 @@
 function Werewolf(name, location){
-  this.name = name;
-  this.location = location;
-  this.human = true;
-  this.hungry = false;
-  this.wolf = false;
-  this.change= function(){
-    if(this.human && !this.wolf){
-  this.human =false;
-  this.wolf =true;
-  this.hungry = true;
-  this.eat=function(victim) {
-  victim.alive =false
-  this.human=true;
- }
-}else if(!this.human && this.wolf){
-  this.human =true;
-  this.wolf =false;
-  this.hungry = false;
-
+this.name = name
+this.location = location
+this.human = true
+this.wolf = false
+this.hungry = false
 }
+
+
+Werewolf.prototype.change = function(){
+  this.human===true? (this.human=false,this.wolf=true,this.hungry=true):(this.human=true,this.wolf=false, this.hungry=true)
+}
+
+
+Werewolf.prototype.eat = function (human) {
+  this.wolf===true?
+  (human.alive = false,
+  this.hungry = false):(human.alive=true,this.hungry=true)
 };
-}
-
 
 function Victim(name){
-  this.name = name;
-  this.alive = true;
-};
+this.name = name
+this.alive = true
+}
 
-module.exports.Victim=Victim;
-module.exports.Werewolf= Werewolf;
+
+module.exports.Werewolf = Werewolf
+module.exports.Victim = Victim

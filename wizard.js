@@ -1,24 +1,18 @@
+function Wizard(obj=[]){
+this.name = obj.name;
+this.bearded = obj.bearded===undefined? true:false;
+this.work = 0 ;
+this.rested = true;
 
-
-
-function Wizard(obj={}) {
-  this.name = obj.name;
-  this.bearded = !!((obj.bearded === undefined))
 }
 
-Wizard.prototype.incantation = function (message) {
-  return message.toUpperCase();
-}
-Wizard.prototype.nah=0;
-Wizard.prototype.rested = true
-Wizard.prototype.cast = function () {
-this.nah++
-if(this.nah>=4)
-{ this.rested=false;
-  return "I SHALL NOT CAST!";}
-  else{
-  return 'MAGIC BULLET'
-};
+Wizard.prototype.incantation = function(string){
+return  string.toUpperCase()
 }
 
-module.exports = Wizard;
+Wizard.prototype.cast = function(){
+this.work++
+return this.work>2? "I SHALL NOT CAST!":"MAGIC BULLET"
+}
+
+module.exports = Wizard
